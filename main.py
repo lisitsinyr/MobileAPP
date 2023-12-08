@@ -1,16 +1,60 @@
-# This is a sample Python script.
+"""
+ =======================================================
+ Copyright (c) 2023
+ Author:
+     Lisitsin Y.R.
+ Project:
+     MobileAPP
+     Python (PROJECTS)
+ Module:
+     main.py
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+ =======================================================
+"""
 
+#------------------------------------------
+# БИБЛИОТЕКИ python
+#------------------------------------------
+import os
+import sys
+import time
+import datetime
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+#------------------------------------------
+# БИБЛИОТЕКИ сторонние
+#------------------------------------------
 
+#------------------------------------------
+# БИБЛИОТЕКИ LU
+#------------------------------------------
+import LULog
+import LUFile
+import LUProc
+import LUos
+import LUObjectsYT
+import LUDateTime
+import LUStrUtils
+import LUDecotators
+import LUSheduler
+import LUConsole
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+#------------------------------------------
+#
+#------------------------------------------
+def main ():
+#beginfunction
+    LResult = 0
+    s = 'ExitProgram...'
+    LULog.LoggerAPPS.info (s)
+    sys.exit(LResult)
+#endfunction
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+#------------------------------------------
+#
+#------------------------------------------
+#beginmodule
+if __name__ == "__main__":
+    main()
+#endif
+
+#endmodule
