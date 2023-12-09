@@ -64,12 +64,26 @@ def RunProcessFile (aFileName: str, aPathWork: str):
     dtype = None
     nrows = None
 
-    APPs = pandas.read_excel(aFileName)
-
-    # APPs = pandas.read_excel(sFileName, sheet_name = 'Лист1',
-    #                          skiprows = 1, header = 1,
-    #                          names = None, usecols = None, dtype = None,
-    #                          nrows = None)
+    APPs = pandas.read_excel(aFileName, sheet_name = 'Лист1',skiprows = 1, header = 1,
+                            names = None, usecols = None, dtype = None, nrows = None
+                             )
+    # print(APPs.index)
+    LULog.LoggerAPPS.log (LULog.TEXT, APPs.index)
+    for row in APPs.itertuples():
+        LFolderMobile = row[1]
+        LLink = row[3]
+        LType = row[4]
+        LProgram = row[5]
+        LShop = row[6]
+        LFactory = row[7]
+        LFolderPC = row[8]
+        if LType == 'ПРОГРАММА' and LLink != '':
+            sLFolderMobile = LUStrUtils.AddCharR ('.', LFolderMobile, 20)
+            sLLink = LUStrUtils.AddCharR ('.', LLink, 50)
+            sLFolderPC = LUStrUtils.AddCharR ('.', LFolderPC, 50)
+            LULog.LoggerAPPS.log (LULog.TEXT, sLFolderMobile+sLLink+sLFolderPC)
+        # if LProgram == 'ВИДЖЕТ':
+        #     LULog.LoggerAPPS.log (LULog.TEXT, LFolderMobile+LLink+LFolderPC)
 #endfunction
 
 #------------------------------------------
@@ -78,13 +92,12 @@ def RunProcessFile (aFileName: str, aPathWork: str):
 def main ():
 #beginfunction
     LArgParser = LUParserARG.TArgParser (description = 'Параметры', prefix_chars = '-/')
-    # required=True
     LArgFileName = LArgParser.ArgParser.add_argument ('FileName', type = str, default = '', help = 'FileName')
     LArgFileName.required = False
     LArgPathWork = LArgParser.ArgParser.add_argument ('PathWork', type = str, default = '', help = 'PathWork')
     LArgPathWork.required = False
     Largs = LArgParser.ArgParser.parse_args ()
-    LULog.LoggerAPPS.log (LULog.TEXT, Largs.__dict__)
+    # LULog.LoggerAPPS.log (LULog.TEXT, Largs.__dict__)
     LFileName = Largs.FileName
     s = f'FileName = {LFileName}'
     LULog.LoggerAPPS.log (LULog.TEXT, s)
