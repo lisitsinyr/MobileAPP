@@ -82,8 +82,18 @@ def RunProcessFile (aFileName: str, aPathWork: str):
             sLLink = LUStrUtils.AddCharR ('.', LLink, 50)
             sLFolderPC = LUStrUtils.AddCharR ('.', LFolderPC, 50)
             LULog.LoggerAPPS.log (LULog.TEXT, sLFolderMobile+sLLink+sLFolderPC)
-        # if LProgram == 'ВИДЖЕТ':
-        #     LULog.LoggerAPPS.log (LULog.TEXT, LFolderMobile+LLink+LFolderPC)
+            LFolderPCwork = aPathWork+'/'+LFolderMobile+'/'+LFolderPC
+            if not LUFile.DirectoryExists (LFolderPCwork):
+                LUFile.ForceDirectories (LFolderPCwork)
+                s = f'Директория: {LFolderPCwork}'
+                LULog.LoggerAPPS.log (LULog.TEXT, s)
+            #endif
+        #endif
+        if LType == 'ВИДЖЕТ':
+            sLFolderMobile = LUStrUtils.AddCharR ('.', LFolderMobile, 20)
+            sLLink = LUStrUtils.AddCharR ('.', LLink, 50)
+            LULog.LoggerAPPS.log (LULog.TEXT, sLFolderMobile+sLLink)
+        #endif
 #endfunction
 
 #------------------------------------------
