@@ -7,7 +7,7 @@
      MobileAPP
      Python (PROJECTS)
  Module:
-     main.py
+     MobileAPP.py
 
  =======================================================
 """
@@ -25,30 +25,25 @@ import datetime
 #------------------------------------------
 import pandas
 
-
 #------------------------------------------
 # БИБЛИОТЕКИ LU
 #------------------------------------------
 import LULog
-# import LUFile
-# import LUProc
-# import LUos
-# import LUObjectsYT
-# import LUDateTime
-# import LUStrUtils
-# import LUDecotators
-# import LUSheduler
-# import LUConsole
+import LUParserARG
+import LUFile
+import LUProc
+import LUos
+import LUDateTime
+import LUStrUtils
 
 #------------------------------------------
 # const
 #------------------------------------------
-sFileName = 'G:\\SOFT-install\\03 ЮРА_ТЕЛЕФОН\\STORE\\НАСТРОЙКА\\ЯРЛЫКИ\\HM20.xlsx'
 
 #------------------------------------------
 #
 #------------------------------------------
-def main ():
+def RunProcessFile (aFileName: str, aPathWork: str):
 #beginfunction
     # название электронной таблицы
     # Если в качестве значения указать список, то будет возвращён словарь датафреймов
@@ -69,12 +64,42 @@ def main ():
     dtype = None
     nrows = None
 
-    APPs = pandas.read_excel(sFileName)
+    APPs = pandas.read_excel(aFileName)
 
     # APPs = pandas.read_excel(sFileName, sheet_name = 'Лист1',
     #                          skiprows = 1, header = 1,
     #                          names = None, usecols = None, dtype = None,
     #                          nrows = None)
+#endfunction
+
+#------------------------------------------
+#
+#------------------------------------------
+def main ():
+#beginfunction
+    LArgParser = LUParserARG.TArgParser (description = 'Параметры', prefix_chars = '-/')
+    # required=True
+    LArgFileName = LArgParser.ArgParser.add_argument ('FileName', type = str, default = '', help = 'FileName')
+    LArgFileName.required = False
+    LArgPathWork = LArgParser.ArgParser.add_argument ('PathWork', type = str, default = '', help = 'PathWork')
+    LArgPathWork.required = False
+    Largs = LArgParser.ArgParser.parse_args ()
+    LULog.LoggerAPPS.log (LULog.TEXT, Largs.__dict__)
+    LFileName = Largs.FileName
+    s = f'FileName = {LFileName}'
+    LULog.LoggerAPPS.log (LULog.TEXT, s)
+    LPathWork = Largs.PathWork
+    s = f'PathWork = {LPathWork}'
+    LULog.LoggerAPPS.log (LULog.TEXT, s)
+    if LPathWork == '':
+        LPathWork = LUos.GetCurrentDir()
+    #endif
+
+    if LUFile.FileExists(LFileName) & LUFile.DirectoryExists (LPathWork):
+        RunProcessFile (LFileName, LPathWork)
+    else:
+        LULog.LoggerAPPS.log (LULog.TEXT, 'No such file or directory')
+    #endif
 
     LResult = 0
     s = 'ExitProgram...'
