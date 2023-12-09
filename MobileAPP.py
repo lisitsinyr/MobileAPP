@@ -97,11 +97,12 @@ def main ():
 
     if LUFile.FileExists(LFileName) & LUFile.DirectoryExists (LPathWork):
         RunProcessFile (LFileName, LPathWork)
+        LResult = 0
     else:
         LULog.LoggerAPPS.log (LULog.TEXT, 'No such file or directory')
+        LResult = 1
     #endif
 
-    LResult = 0
     s = 'ExitProgram...'
     LULog.LoggerAPPS.info (s)
     sys.exit(LResult)
