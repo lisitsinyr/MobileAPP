@@ -84,7 +84,7 @@ def RunProcessFile (aFileName: str, aPathWork: str):
             LULog.LoggerAPPS.log (LULog.TEXT, sLFolderMobile+sLLink+sLFolderPC)
             LFolderPCwork = aPathWork+'/'+LFolderMobile+'/'+LFolderPC
             if not LUFile.DirectoryExists (LFolderPCwork):
-                LUFile.ForceDirectories (LFolderPCwork)
+                # LUFile.ForceDirectories (LFolderPCwork)
                 s = f'Директория: {LFolderPCwork}'
                 LULog.LoggerAPPS.log (LULog.TEXT, s)
             #endif
@@ -132,7 +132,7 @@ def main ():
 #endfunction
 
 #------------------------------------------
-#
+# MODULE_________________from PyCharm
 #------------------------------------------
 #beginmodule
 if __name__ == "__main__":
