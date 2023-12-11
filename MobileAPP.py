@@ -41,7 +41,7 @@ import LUStrUtils
 #------------------------------------------
 
 #------------------------------------------
-#
+# RunProcessFile (aFileName: str, aPathWork: str)
 #------------------------------------------
 def RunProcessFile (aFileName: str, aPathWork: str):
 #beginfunction
@@ -97,7 +97,7 @@ def RunProcessFile (aFileName: str, aPathWork: str):
 #endfunction
 
 #------------------------------------------
-#
+# main ()
 #------------------------------------------
 def main ():
 #beginfunction
