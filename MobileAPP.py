@@ -5,7 +5,7 @@
      Lisitsin Y.R.
  Project:
      MobileAPP
-     Python (PROJECTS)
+     Python (PROJECTS_PY)
  Module:
      MobileAPP.py
 
