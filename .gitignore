@@ -1,18 +1,46 @@
+# ----------------------------------------------------------------
 # Byte-compiled / optimized / DLL files
+
+# GIT
+.gitignore
+.gitmodules
+CreateGIT.bat
 
 # Environments
 .env
+.env/
+.env.bak/
+
 .venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+.venv/
+.venv.bak/
+
+# Каталоги
+EXE
+EXE/
+LOG
+LOG/
+WORK
+WORK/
+out
+out/
+!DOC
+!DOC/
+# Файлы
+*.exe
+*.spec
+*.log
+GIT_CONFIG
+
+# VS Code
+*.code-workspace
+.vscode
+.vscode/
 
 # PyCharm
 .idea
 .idea/
 
-LOG
-LOG/
-*.log
+__pycache__/
+
+# ----------------------------------------------------------------
